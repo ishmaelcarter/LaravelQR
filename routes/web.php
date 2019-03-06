@@ -14,6 +14,7 @@
 use App\Transaction as Transaction;
 use Illuminate\Http\Request;
 
+
 Route::get('/', function () {
     return view('hello');
 });
