@@ -26,12 +26,12 @@ Route::post('/transaction', function (Request $request) {
     $transaction = new Transaction();
     $transaction->transaction_key = $request->id;
     $transaction->save();
-
-    echo "<p>Unique QR Code Created<p>
-          <a href='/'>Home</a>";
+    echo "<p><a href=" . URL::to('/transaction/' . $transaction->transaction_key) . ">VIEW QR CODE / SAVE ID</a><p>";
+    echo "<a href='/'>Home</a>";
 });
 
-Route::get('/transaction/{id}', function ($id) {
-    $transaction = Transaction::find($id);
-    echo "<img src=https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" . $transaction->transaction_key . "id='qrcode'>";
+Route::get('/transaction/{transaction_key}', function ($transaction_key) {
+    $transaction = Transaction::find($transaction_key);
+    echo "<a href='/'>Home</a><br>";
+    echo "<img src=https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" . $transaction . "id='qrcode'>";
 });
