@@ -7,7 +7,7 @@
       <title>Qcommerce</title>
     </head>
 <body>
-  <div>
+  <div class="container">
     <a href="/transaction">Create New QR Code</a>
   </div>
   @if(Auth::guest())
