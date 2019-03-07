@@ -11,7 +11,10 @@
     <a href="/transaction">Create New QR Code</a>
   </div>
   @if(Auth::guest())
-             <a href="/login" class="btn btn-info"> You need to login to see all QRs >></a>
-           @endif
+    <a href="/login" class="btn btn-info"> Login</a>
+  @endif
+  @if(Auth::user())
+    <a href="/login" class="btn btn-info"> Dashboard</a>
+  @endif
 </body>
 </html>
