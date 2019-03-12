@@ -4,49 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+        <script src="{{ asset('js/keygen.js') }}" defer></script>
         <title>Qcommerce</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
-        <script>
-        function generateUUID()
-        {
-        	var d = new Date().getTime();
-
-        	if( window.performance && typeof window.performance.now === "function" )
-        	{
-        		d += performance.now();
-        	}
-
-        	var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c)
-        	{
-        		var r = (d + Math.random()*16)%16 | 0;
-        		d = Math.floor(d/16);
-        		return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-        	});
-
-        return uuid;
-        }
-
-        function generateQR(uuid)
-        {
-          const url ='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + uuid;
-          return url;
-        }
-
-    function keygen()
-      {
-        uuid = generateUUID()
-        qr = generateQR(uuid)
-        $( '#keygen' ).on('click',function()
-        {
-          $( '#qrcode' ).attr("src", qr);
-          $( '#id' ).attr("value", uuid);
-        });
-      }
-        </script>
         <!-- Styles -->
         <style>
             html, body {
