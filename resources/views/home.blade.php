@@ -15,9 +15,28 @@
                     @endif
                 </div>
                 <div class="card-body">
-                   @foreach ($transactions as $transaction)
-                     <li>{{$transaction['transaction_key']}}</li>
-                   @endforeach
+                   <div class="tbl-header">
+                     <table cellpadding="0" cellspacing="0" border="0">
+                       <thead>
+                         <tr>
+                           <th>ID</th>
+                           <th>Key</th>
+                           <th>Created</th>
+                         </tr>
+                       </thead>
+                     </table>
+                   </div>
+                    <div class="tbl-content">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                          @foreach ($transactions as $transaction)
+                          <tr>
+                            <td>{{$transaction['id']}}</td>
+                            <td>{{$transaction['transaction_key']}}</td>
+                            <td>{{$transaction['created_at']}}</td>
+                          </tr>
+                          @endforeach
+                    </div>
                 </div>
             </div>
         </div>
