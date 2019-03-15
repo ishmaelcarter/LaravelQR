@@ -121,11 +121,19 @@ img {
         </style>
     </head>
     <body>
+      <div>
+        <a class="navbar-brand" href="{{ url('/') }}">
+            Home
+        </a>
+      </div>
         <div>
             <button class="form-control" id="keygen" onclick="keygen()">Generate QR Code</button>
             <form action="/transaction" method="post">
               @csrf
               <input type="hidden" id="id" name="id" value="">
+              @if(Auth::user())
+                <input type="hidden" id="user" name="user" value="{{ Auth::id() }}">
+              @endif
               <input type="submit" value="Save QR Code"></input>
             </form>
             <img src="" id="qrcode">
