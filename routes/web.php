@@ -28,9 +28,9 @@ Route::post('/transaction', function (Request $request) {
     $transaction->transaction_key = $request->id;
     $transaction->user = $request->user;
     $transaction->save();
-    echo "<p><a href=" . URL::to('/transaction/' . $transaction->transaction_key) . ">VIEW QR CODE / SAVE ID</a><p>";
-    echo "<a href='/'>Generate New Key</a>";
-    echo "<a href='/home'>Dashboard</a>";
+    echo "<div><a href=" . URL::to('/transaction/' . $transaction->transaction_key) . ">VIEW QR CODE / SAVE ID</a><div>";
+    echo "<div><a href='/'>Generate New Key</a></div>";
+    echo "<div><a href='/home'>Dashboard</a></div>";
 });
 
 Route::get('/transaction/{transaction_key}', function ($transaction_key) {
