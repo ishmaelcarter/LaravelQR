@@ -1,3 +1,5 @@
+@extends('layouts/app')
+@section('content')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -121,13 +123,8 @@ img {
         </style>
     </head>
     <body>
-      <div>
-        <a class="navbar-brand" href="{{ url('/home') }}">
-            Dashboard
-        </a>
-      </div>
-        <div>
-            <button class="form-control" id="keygen" onclick="keygen()">Generate QR Code</button>
+        <div class="center">
+            <button class="" id="keygen" onclick="keygen()">Generate QR Code</button>
             <form action="/transaction" method="post">
               @csrf
               <input type="hidden" id="id" name="id" value="">
@@ -140,3 +137,4 @@ img {
         </div>
     </body>
 </html>
+@stop

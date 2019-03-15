@@ -35,6 +35,17 @@ td{
   border-bottom: solid 1px rgba(255,255,255,0.1);
   border: 1px solid black;
 }
+
+.center {
+  width:100%;
+  display: block;
+  margin: auto;
+}
+
+.center button, .center form input {
+  display: block;
+  margin: auto;
+}
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
