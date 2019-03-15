@@ -122,8 +122,8 @@ img {
     </head>
     <body>
       <div>
-        <a class="navbar-brand" href="{{ url('/') }}">
-            Home
+        <a class="navbar-brand" href="{{ url('/home') }}">
+            Dashboard
         </a>
       </div>
         <div>
