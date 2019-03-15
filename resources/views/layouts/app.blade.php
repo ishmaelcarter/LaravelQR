@@ -60,7 +60,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('/transaction') }}">
+                                    <a class="dropdown-item" href="/transaction">
                                         New QR Code
                                     </a>
 
