@@ -46,6 +46,12 @@ td{
   display: block;
   margin: auto;
 }
+
+#qrcode {
+  display:block;
+  margin: auto;
+  margin-top: 2%;
+}
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
