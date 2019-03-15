@@ -131,7 +131,7 @@ img {
               @if(Auth::user())
                 <input type="hidden" id="user" name="user" value="{{ Auth::id() }}">
               @endif
-              <input type="submit" value="Save QR Code"></input>
+              <input id="save" style="display:none;"type="submit" value="Save QR Code"></input>
             </form>
             <img src="" id="qrcode">
         </div>

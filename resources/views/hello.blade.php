@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,14 +9,18 @@
       <title>Qcommerce</title>
     </head>
 <body>
-  <div class="container">
-    <a href="/transaction">Create New QR Code</a>
+  <div class="center">
+      <button class="" id="keygen" onclick="keygen()">Generate QR Code</button>
+      <form action="/transaction" method="post">
+        @csrf
+        <input type="hidden" id="id" name="id" value="">
+        @if(Auth::user())
+          <input type="hidden" id="user" name="user" value="{{ Auth::id() }}">
+        @endif
+        <input type="submit" id="save" value="Save QR Code" style="display:none;"></input>
+      </form>
+      <img src="" id="qrcode">
   </div>
-  @if(Auth::guest())
-    <a href="/login" class="btn btn-info"> Login</a>
-  @endif
-  @if(Auth::user())
-    <a href="/login" class="btn btn-info"> Dashboard</a>
-  @endif
 </body>
 </html>
+@endsection
