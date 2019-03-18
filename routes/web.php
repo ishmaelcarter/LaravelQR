@@ -14,6 +14,9 @@
 use App\Transaction as Transaction;
 use Illuminate\Http\Request;
 
+if (env('APP_ENV') === 'production') {
+    URL::forceSchema('https');
+}
 
 Route::get('/', function () {
     return view('hello');
