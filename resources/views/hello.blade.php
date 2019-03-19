@@ -9,15 +9,15 @@
       <title>Qcommerce</title>
     </head>
 <body>
-  <div class="center">
-      <button class="" id="keygen" onclick="keygen()">Generate QR Code</button>
+  <div class="center" id="keygen" onclick="keygen()">
+      <button class="">Generate Unique Key</button>
       <form action="/transaction" method="post">
         @csrf
         <input type="hidden" id="id" name="id" value="">
         @if(Auth::user())
           <input type="hidden" id="user" name="user" value="{{ Auth::id() }}">
+          <input id="save" style="display:none;"type="submit" value="Save to Dashboard"></input>
         @endif
-        <input type="submit" id="save" value="Save QR Code" style="display:none;"></input>
       </form>
       <img src="" id="qrcode">
   </div>
