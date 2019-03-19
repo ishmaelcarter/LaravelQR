@@ -63,7 +63,7 @@
                                       Dashboard
                                   </a>
                                   <a class="dropdown-item" href="/transaction">
-                                      New QR Code
+                                      Generate New Key
                                   </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

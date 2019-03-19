@@ -33,7 +33,7 @@ Route::post('/transaction', function (Request $request) {
     $transaction->save();
     echo view('layouts.app');
     echo "<div class='center'>";
-    echo "<button><a href=" . URL::to('/transaction/' . $transaction->transaction_key) . ">VIEW QR CODE / SAVE ID</a></button>";
+    echo "<button><a href=" . URL::to('/transaction/' . $transaction->transaction_key) . ">View QR Code and Key</a></button>";
     echo "<button><a href='/'>Generate New Key</a></button>";
     echo "</div>";
 });
