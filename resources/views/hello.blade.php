@@ -11,6 +11,8 @@
 <body>
   <div class="center" id="keygen" onclick="keygen()">
       <button class="">Generate Unique Key</button>
+    </div>
+    <div class="center">
       <form action="/transaction" method="post">
         @csrf
         <input type="hidden" id="id" name="id" value="">
@@ -20,6 +22,9 @@
         @endif
       </form>
       <img src="" id="qrcode">
+      @if(!Auth::user())
+        <p>Login or register to save generated keys to your dashboard.</p>
+      @endif
   </div>
 </body>
 </html>

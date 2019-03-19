@@ -134,6 +134,9 @@ img {
               @endif
             </form>
             <img src="" id="qrcode">
+            @if(!Auth::user())
+              <p>Login or register to save generated keys to your dashboard.</p>
+            @endif
         </div>
     </body>
 </html>
