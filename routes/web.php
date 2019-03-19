@@ -31,15 +31,22 @@ Route::post('/transaction', function (Request $request) {
     $transaction->transaction_key = $request->id;
     $transaction->user = $request->user;
     $transaction->save();
-    echo "<div><a href=" . URL::to('/transaction/' . $transaction->transaction_key) . ">VIEW QR CODE / SAVE ID</a><div>";
-    echo "<div><a href='/'>Generate New Key</a></div>";
-    echo "<div><a href='/home'>Dashboard</a></div>";
+    echo view('layouts.app');
+    echo "<div class='center'>";
+    echo "<button><a href=" . URL::to('/transaction/' . $transaction->transaction_key) . ">VIEW QR CODE / SAVE ID</a><button>";
+    echo "<button><a href='/'>Generate New Key</a></button>";
+    echo "</div>";
 });
 
 Route::get('/transaction/{transaction_key}', function ($transaction_key) {
     $transaction = Transaction::find($transaction_key);
-    echo "<a href='/'>Home</a><br>";
-    echo "<img src=https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" . $transaction . "id='qrcode'>";
+    echo view('layouts.app');
+    echo "<div class='center'>";
+    echo "<img src=https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" . $transaction_key . "id='qrcode'>";
+    echo "<p>";
+    echo $transaction_key;
+    echo "</p>";
+    echo "</div>";
 });
 
 Auth::routes();

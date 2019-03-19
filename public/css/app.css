@@ -42,9 +42,11 @@ td{
   margin: auto;
 }
 
-.center button, .center form input {
+.center button, .center form input, .center img, .center p {
   display: block;
   margin: auto;
+  margin-top: 1%;
+  text-align: center;
 }
 
 #qrcode {
