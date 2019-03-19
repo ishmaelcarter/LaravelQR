@@ -32,7 +32,7 @@
                           @foreach ($transactions as $transaction)
                           <tr>
                             <td>{{$transaction['id']}}</td>
-                            <td>{{$transaction['transaction_key']}}</td>
+                            <td><a href="/transaction/{{$transaction['transaction_key']}}">{{$transaction['transaction_key']}}</a></td>
                             <td>{{$transaction['created_at']}}</td>
                           </tr>
                           @endforeach
