@@ -22,11 +22,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+
+ public function boot()
+ {
       if (!\App::environment('local')) {
-          \URL::forceSchema('https');
-     }
-        Schema::defaultStringLength(191);
-    }
+           \URL::forceSchema('https');
+      }
+ }
 }
