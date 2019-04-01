@@ -12,7 +12,9 @@
 */
 
 use App\Transaction as Transaction;
+use App\Tweets as Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 if (env('APP_ENV') === 'production') {
     URL::forceSchema('https');
@@ -47,6 +49,12 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
     echo $transaction_key;
     echo "</p>";
     echo "</div>";
+});
+
+Route::get('/trending', function () {
+  $trending = Collect(Tweet::orderBy('time','asc')->get());
+  $trendingUnique = $trending->unique('media');
+  return view('tweets', compact('trendingUnique') );
 });
 
 Auth::routes();
