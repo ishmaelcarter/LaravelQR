@@ -82,6 +82,13 @@ button a {
   background: rgba(204, 204, 204, 0.7);
 }
 
+@media only screen and (max-width: 600px) {
+  .tweet-inner {
+    flex-basis: 100%;
+  }
+}
+
+
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
