@@ -52,7 +52,7 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
 });
 
 Route::get('/trending', function () {
-  $trending = Collect(Tweet::orderBy('time','asc')->get());
+  $trending = Collect(Tweet::orderBy('time','desc')->get());
   $trendingUnique = $trending->unique('media');
   return view('tweets', compact('trendingUnique') );
 });
