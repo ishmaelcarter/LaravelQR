@@ -52,8 +52,8 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
 });
 
 Route::get('/trending', function () {
-  $trending = Collect(Tweet::orderBy('time','desc')->get());
-  $trendingUnique = $trending->unique('media');
+  $trending = Collect(Tweet::orderBy('id','desc')->get());
+  $trendingUnique = $trending->unique('media','text');
   return view('tweets', compact('trendingUnique') );
 });
 
