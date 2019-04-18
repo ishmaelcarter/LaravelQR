@@ -60,7 +60,7 @@ Route::get('/trending', function () {
 Route::get('/api/trending', function () {
   $trending = Collect(Tweet::orderBy('id','desc')->get());
   $trendingUnique = $trending->unique('media','text');
-  return $trendingUnique;
+  return $trending;
 });
 
 Auth::routes();
