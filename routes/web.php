@@ -57,7 +57,7 @@ Route::get('/trending', function () {
   return view('tweets', compact('trendingUnique') );
 });
 
-Route::get('api/trending', function () {
+Route::get('/api/trending', function () {
   $trending = Collect(Tweet::orderBy('id','desc')->get());
   $trendingUnique = $trending->unique('media','text');
   return $trending;
