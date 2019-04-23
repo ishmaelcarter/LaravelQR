@@ -77,9 +77,9 @@ button a {
   flex-basis: 33.3%;
 }
 
-.tweet-inner div a {
-  color: black;
-  background: rgba(204, 204, 204, 0.7);
+.tweet-inner a {
+  color: white;
+  font-size: 80%;
 }
 
 @media only screen and (max-width: 600px) {

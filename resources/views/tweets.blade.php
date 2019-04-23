@@ -5,7 +5,7 @@
   @foreach ($trendingUnique as $trending)
     @if ($loop->iteration < 30)
       <div class="tweet-inner">
-        <div style="background-image: url('{{$trending->media}}')"><a class="" href="{{$trending->url}}">{{$trending->text}}</a></div>
+        <a class="" href="{{$trending->url}}"><div style="background-image: url('{{$trending->media}}')">{{$trending->text}}</div></a>
       </div>
     @endif
   @endforeach
