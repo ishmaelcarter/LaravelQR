@@ -26,7 +26,7 @@ class TweetsController extends Controller
        }
      }
 
-     public function trendingKeyword($keyword)
+     public function search($keyword)
      {
        $trending = Tweets::where('text', 'LIKE', "%{$keyword}%")->simplePaginate(30);
        $trendingUnique = $trending->unique('media','text');
