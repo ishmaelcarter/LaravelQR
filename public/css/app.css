@@ -103,6 +103,35 @@ button a {
   }
 }
 
+input[type="search"] {
+    font-family: FontAwesome;
+}
+
+.search-box input[type="search"] {
+  border: none;
+  padding: 0 5%;
+  z-index: 1;
+  transition: all .25s ease-in .25s;
+  font-size: .75rem;
+  line-height: 25px;
+}
+.search-box input[type="search"]:hover {
+  cursor: pointer;
+}
+.search-box input[type="search"]:hover:focus {
+  cursor: text;
+}
+.search-box input[type="search"]:hover + span {
+  background: rgba(255, 255, 255, 0.2);
+}
+.search-box input[type="search"]:focus {
+  border: 1px solid #25b7c4;
+  width: 100%;
+  padding: 0 10px;
+  outline: none;
+  color: black;
+  background: none;
+}
 
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)

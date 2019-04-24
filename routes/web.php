@@ -15,6 +15,8 @@ use App\Transaction as Transaction;
 use App\Tweets as Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Input;
 
 if (env('APP_ENV') === 'production') {
     URL::forceSchema('https');
@@ -54,6 +56,16 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
 Route::get('/trending', 'TweetsController@showAll');
 
 Route::get('/api/trending', 'TweetsController@apiAuth');
+
+Route::post('/trending', function($keyword){
+  return redirect('/trending', ['keyword' => $_POST['keyword']]);
+});
+
+Route::get('/trending/{keyword}', function($keyword) {
+  $trending = Tweet::where('text', 'LIKE', "%{$keyword}%")->simplePaginate(30);
+  $trendingUnique = $trending->unique('media','text');
+  return view('tweets', compact('trending'), compact('trendingUnique') );
+});
 
 Auth::routes();
 

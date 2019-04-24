@@ -10,12 +10,22 @@
     <title>{{ config('app.name', 'QR') }}</title>
 
     <!-- Scripts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist/jquery-ui.min.js" integrity="sha384-PtTRqvDhycIBU6x1wwIqnbDo8adeWIWP3AHmnrvccafo35E7oIvW7HPXn2YimvWu" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{ asset('js/keygen.js') }}" defer></script>
+    <script src="{{ asset('js/qr.js') }}" defer></script>
     <script>
+    $('#form input').keydown(function(e) {
+        if (e.keyCode == 13) {
+
+            $('#search').submit();
+        }
+    });
+
+
     function generateUUID()
     {
       var d = new Date().getTime();
@@ -111,9 +121,17 @@
                                 </div>
                             </li>
                         @endguest
+                        @if (Request::is('trending*'))
+                        <li class="nav-item" style="display:flex;align-items:center;justify-content:center;">
+                          <form action="/trending" method="get" id="search">
+	                            <div class="search-box">
+                                <input type="search" name="search" placeholder="&#xf002; Search Trending" />
+	                            </div>
+                          </form>
+                        </li>
+                        @endif
                     </ul>
                 </div>
-            </div>
         </nav>
 
         <main class="py-4">
