@@ -51,17 +51,9 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
     echo "</div>";
 });
 
-Route::get('/trending', function () {
-  $trending = Tweet::distinct('text')->orderBy('id','desc')->simplePaginate(60);
-  $trendingUnique = $trending->unique('media','text');
-  return view('tweets', compact('trending'), compact('trendingUnique') );
-});
+Route::get('/trending', 'TweetsController@showAll');
 
-Route::get('/api/trending', function () {
-  $trending = Collect(Tweet::orderBy('id','desc')->get());
-  $trendingUnique = $trending->unique('media','text');
-  return $trendingUnique->values();
-});
+Route::get('/api/trending', 'TweetsController@apiAuth');
 
 Auth::routes();
 

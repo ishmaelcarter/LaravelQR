@@ -6,18 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Tweets as Tweets;
 
-class HomeController extends Controller
+class TweetsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the tweets index.
      *
@@ -25,9 +15,20 @@ class HomeController extends Controller
      */
      public function showAll()
      {
-       $trending = Collect(Tweet::orderBy('time','asc')->get());
-       $trendingUnique = $trending->unique('media');
-       return view('tweets', compact('trendingUnique') );
+       $trending = Tweets::distinct('text')->orderBy('id','desc')->simplePaginate(60);
+       $trendingUnique = $trending->unique('media','text');
+       return view('tweets', compact('trending'), compact('trendingUnique') );
+     }
+
+     public function apiAuth()
+     {
+       if (Auth::user()) {
+         $trending = Collect(Tweets::orderBy('id','desc')->get());
+         $trendingUnique = $trending->unique('media','text');
+         return $trendingUnique->values();
+       } else {
+            abort(401, "Invalid Authentication");
+       }
      }
 
 }
