@@ -52,15 +52,15 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
 });
 
 Route::get('/trending', function () {
-  $trending = Collect(Tweet::orderBy('id','desc')->get());
+  $trending = Tweet::distinct('text')->orderBy('id','desc')->paginate(60);
   $trendingUnique = $trending->unique('media','text');
-  return view('tweets', compact('trendingUnique') );
+  return view('tweets', compact('trending'), compact('trendingUnique') );
 });
 
 Route::get('/api/trending', function () {
   $trending = Collect(Tweet::orderBy('id','desc')->get());
   $trendingUnique = $trending->unique('media','text');
-  return $trendingUnique->values()->all();
+  return $trendingUnique->values();
 });
 
 Auth::routes();
