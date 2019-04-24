@@ -89,6 +89,10 @@ button a {
     justify-content: center;
 }
 
+#keygen {
+  padding-top: 3%;
+}
+
 .py-4 {
   padding-top: 0;
 }
