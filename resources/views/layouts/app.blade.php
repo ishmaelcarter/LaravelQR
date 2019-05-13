@@ -17,6 +17,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="{{ asset('js/qr.js') }}" defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140069991-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140069991-1');
+    </script>
     <script>
     $('#form input').keydown(function(e) {
         if (e.keyCode == 13) {
@@ -125,7 +134,7 @@
                         <li class="nav-item" style="display:flex;align-items:center;justify-content:center;">
                           <form action="/trending" method="get" id="search">
 	                            <div class="search-box">
-                                <input type="search" name="search" placeholder="&#xf002; Search Trending" />
+                                <input type="search" name="search-input" placeholder="&#xf002; Search Trending" />
 	                            </div>
                           </form>
                         </li>
