@@ -132,7 +132,8 @@
                         @endguest
                         @if (Request::is('trending*'))
                         <li class="nav-item" style="display:flex;align-items:center;justify-content:center;">
-                          <form action="/trending" method="get" id="search">
+                          <form action="/trending" method="post" id="search">
+                            @csrf
 	                            <div class="search-box">
                                 <input type="search" name="search-input" placeholder="&#xf002; Search Trending" />
 	                            </div>

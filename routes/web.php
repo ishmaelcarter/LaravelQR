@@ -53,19 +53,19 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
     echo "</div>";
 });
 
-Route::get('/trending', 'TweetsController@showAll');
+Route::get('/trending/', 'TweetsController@showAll')->name('trending');
 
 Route::get('/api/trending', 'TweetsController@apiAuth');
 
-Route::post('/trending', function($keyword){
-  return redirect('/trending', ['keyword' => $_POST['keyword']]);
+Route::post('/trending', function(){
+  return redirect()->route('search', ['keyword' => $_POST['search-input']]);
 });
 
-Route::get('/trending/{keyword}', function($keyword) {	Route::get('/trending/{keyword}', 'TweetsController@search');
+Route::get('/trending/{keyword}', function($keyword) {
   $trending = Tweet::where('text', 'LIKE', "%{$keyword}%")->simplePaginate(30);
   $trendingUnique = $trending->unique('media','text');
   return view('tweets', compact('trending'), compact('trendingUnique') );
-});
+})->name('search');
 
 Auth::routes();
 
