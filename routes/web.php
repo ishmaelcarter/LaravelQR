@@ -61,7 +61,11 @@ Route::post('/trending', function($keyword){
   return redirect('/trending', ['keyword' => $_POST['keyword']]);
 });
 
-Route::get('/trending/{keyword}', 'TweetsController@search');
+Route::get('/trending/{keyword}', function($keyword) {	Route::get('/trending/{keyword}', 'TweetsController@search');
+  $trending = Tweet::where('text', 'LIKE', "%{$keyword}%")->simplePaginate(30);
+  $trendingUnique = $trending->unique('media','text');
+  return view('tweets', compact('trending'), compact('trendingUnique') );
+});
 
 Auth::routes();
 
