@@ -62,9 +62,8 @@ Route::post('/trending', function(){
 });
 
 Route::get('/trending/{keyword}', function($keyword) {
-  $trending = Tweet::where('text', 'LIKE', "%{$keyword}%")->simplePaginate(30);
-  $trendingUnique = $trending->unique('media','text');
-  return view('tweets', compact('trending'), compact('trendingUnique') );
+  $trending = Tweet::where('text', 'LIKE', "%{$keyword}%")->groupBy('media')-get()->simplePaginate(20);
+  return view('tweets', compact('trending'));
 })->name('search');
 
 Auth::routes();
