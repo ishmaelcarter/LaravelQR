@@ -20,7 +20,7 @@ class TweetsController extends Controller
        if (Input::has('search')) {
          return redirect('/trending/' . Input::get('search'));
        } else {
-         $trending = Tweets::distinct('text')->orderBy('id','desc')->simplePaginate(20);
+         $trending = Tweets::distinct('text')->orderBy('id','desc')->simplePaginate(15);
          return view('tweets', compact('trending'));
        }
      }
