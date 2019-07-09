@@ -53,16 +53,16 @@ Route::get('/transaction/{transaction_key}', function ($transaction_key) {
     echo "</div>";
 });
 
-Route::get('/trending/', 'TweetsController@showAll')->name('trending');
+Route::get('/trending', 'TweetsController@showAll')->name('trending');
 
 Route::get('/api/trending', 'TweetsController@apiAuth');
 
 Route::post('/trending', function(){
-  return redirect()->route('search', ['keyword' => $_POST['search-input']]);
+  return redirect('/trending/' . $_POST['search-input']);
 });
 
 Route::get('/trending/{keyword}', function($keyword) {
-  $trending = Tweet::where('text', 'LIKE', "%{$keyword}%")->groupBy('media')-get()->simplePaginate(15);
+  $trending = Tweet::where('text', 'LIKE', "%{$keyword}%")->simplePaginate(15);
   return view('tweets', compact('trending'));
 })->name('search');
 
